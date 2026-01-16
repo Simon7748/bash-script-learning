@@ -39,6 +39,12 @@ echo -e "${GREEN}Copying finished!${NC}"
 echo -e "${GREEN}Backup complete for $TODAY${NC}"#!/bin/bash
 
 echo "Starting backup..."
+read -p "Proceed with backup? (y/n): " choice
+choice=${choice,,}  # make lowercase
+if [[ $choice != "y" && $choice != "yes" ]]; then
+    echo -e "${RED}Backup cancelled.${NC}"
+    exit 0
+fi
 # Today's date in YYYY-MM-DD format
 TODAY=$(date +%Y-%m-%d)
 
